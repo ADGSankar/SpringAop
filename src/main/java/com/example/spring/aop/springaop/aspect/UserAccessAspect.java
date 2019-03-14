@@ -19,17 +19,18 @@ public class UserAccessAspect {
 	
 	
 	//execution (* PACKAGE.*.*(..))
-	@AfterReturning(value="execution (* com.example.spring.aop.springaop.data.*.*(..))",returning="result" )
+//	@AfterReturning(value="execution (* com.example.spring.aop.springaop.data.*.*(..))",returning="result" )
+	@AfterReturning(value="com.example.spring.aop.springaop.aspect.CommonJoinPointConfig.dataLayerExecution()",returning="result" )
 	public void afterReturning(JoinPoint joinPoint,Object result)
 	{
 		logger.info("{} returned with value {}",joinPoint,result);
 	}
-	@AfterThrowing(value="execution (* com.example.spring.aop.springaop.data.*.*(..))",throwing="exception" )
+	@AfterThrowing(value="com.example.spring.aop.springaop.aspect.CommonJoinPointConfig.dataLayerExecution()",throwing="exception" )
 	public void afterThrowing(JoinPoint joinPoint,Exception exception)
 	{
 		logger.info("{} returned with value {}",joinPoint,exception);
 	}
-	@After(value="execution (* com.example.spring.aop.springaop.data.*.*(..))")
+	@After(value="com.example.spring.aop.springaop.aspect.CommonJoinPointConfig.dataLayerExecution()")
 	public void after(JoinPoint joinPoint)
 	{
 		logger.info("after aspect {}",joinPoint);
